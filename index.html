@@ -25,60 +25,63 @@
         <div class="text-center max-w-2xl mx-auto mb-12">
             <span class="bg-red-500/10 text-red-400 text-xs font-semibold px-3 py-1 rounded-full border border-red-500/20 uppercase tracking-wider">Open Source Solution</span>
             <h2 class="text-4xl font-extrabold tracking-tight mt-4 mb-3 text-white">Stop Roblox from Reinstalling Itself.</h2>
-            <p class="text-slate-400 text-base">If standard uninstalls fail because background sync daemons or cloud queues keep forcing a rollback, use these programmatic fixes.</p>
+            <p class="text-slate-400 text-base">Download the official community fix package to break the background sync loop and permanently banish ghost installations.</p>
         </div>
 
         <!-- Platform Selector Tabs -->
         <div class="flex justify-center space-x-4 mb-8">
             <button onclick="switchTab('android')" id="btn-android" class="px-6 py-2.5 rounded-xl font-medium transition bg-red-600 text-white shadow-lg shadow-red-600/20">
-                🤖 Android Fix
+                🤖 Android Tool
             </button>
             <button onclick="switchTab('ios')" id="btn-ios" class="px-6 py-2.5 rounded-xl font-medium transition bg-slate-900 text-slate-400 border border-slate-800 hover:text-white">
-                🍏 iPhone / iOS Fix
+                🍏 iPhone / iOS Guide
             </button>
         </div>
 
         <!-- Android Tab Content -->
         <div id="content-android" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl">
-            <h3 class="text-xl font-bold text-white mb-2">Automated ADB Purge & Freeze Script</h3>
-            <p class="text-slate-400 text-sm mb-6">Android background services can force rollbacks via user ID 0. This open-source Python script wipes package instances and freezes the app ID.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-1">Android ADB Purge & Freeze Script</h3>
+                    <p class="text-slate-400 text-sm">Wipes residual package instances from user ID 0 and freezes the app ID.</p>
+                </div>
+                <!-- Direct Download Button for Android Script -->
+                <a id="download-android-btn" onclick="downloadAndroidScript()" class="cursor-pointer bg-red-600 hover:bg-red-500 text-white px-5 py-3 rounded-xl font-semibold text-sm transition flex items-center space-x-2 shadow-lg shadow-red-600/20 shrink-0">
+                   <span>📥 Download Android Fix (.py)</span>
+                </a>
+            </div>
             
-            <div class="space-y-4">
-                <div class="flex items-center justify-between bg-slate-950 px-4 py-3 rounded-xl border border-slate-800 text-xs text-slate-300 font-mono">
-                    <span>pip install requests (Standard Python 3 required)</span>
-                    <span class="text-red-400">Step 1</span>
-                </div>
-                <div class="relative bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
-                    <pre><code>import subprocess
-import sys
-
-PACKAGE_NAME = "com.roblox.client"
-
-def run_adb(cmd):
-    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    return res.stdout.strip()
-
-print("[*] Purging Roblox and freezing package...")
-run_adb(["adb", "shell", f"pm uninstall --user 0 {PACKAGE_NAME}"])
-run_adb(["adb", "shell", f"pm suspend {PACKAGE_NAME}"])
-print("[✓] Done! Restart your phone.")</code></pre>
-                </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-2">
+                <p class="font-semibold text-slate-200">How to use your download:</p>
+                <ol class="list-decimal list-inside space-y-1 text-slate-400">
+                    <li>Enable <strong>USB Debugging</strong> in your Android Developer Options.</li>
+                    <li>Plug your phone into a computer with Python & ADB installed.</li>
+                    <li>Run the downloaded script: <code class="bg-slate-900 px-2 py-0.5 rounded text-red-400">python roblox_killer.py</code></li>
+                </ol>
             </div>
         </div>
 
         <!-- iOS Tab Content -->
         <div id="content-ios" class="hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl">
-            <h3 class="text-xl font-bold text-white mb-2">Deep Cloud Account Cache Flush</h3>
-            <p class="text-slate-400 text-sm mb-6">On iOS, ghost reinstalls are almost always triggered by a stuck purchase history queue or Apple Family Sharing sync loop.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-1">iOS Deep Account Cache Guide & Script</h3>
+                    <p class="text-slate-400 text-sm">Offline troubleshooting guide and profile checklist for Apple devices.</p>
+                </div>
+                <!-- Direct Download Button for iOS Guide -->
+                <a id="download-ios-btn" onclick="downloadIOSGuide()" class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-white px-5 py-3 rounded-xl font-semibold text-sm transition flex items-center space-x-2 border border-slate-700 shrink-0">
+                   <span>📥 Download iOS Guide (.txt)</span>
+                </a>
+            </div>
             
-            <ul class="space-y-4 text-sm text-slate-300">
+            <ul class="space-y-3 text-sm text-slate-300">
                 <li class="flex items-start space-x-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                    <span class="bg-red-500/20 text-red-400 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">1</span>
-                    <div><strong>Media & Purchases Reset:</strong> Go to <code>Settings > [Your Name] > Media & Purchases</code>, sign out entirely, restart your phone, and sign back in to force-clear cloud flags.</div>
+                    <span class="bg-slate-800 text-slate-300 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">1</span>
+                    <div><strong>Media & Purchases Reset:</strong> Go to <code>Settings > [Your Name] > Media & Purchases</code>, sign out entirely, restart your phone, and sign back in.</div>
                 </li>
                 <li class="flex items-start space-x-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                    <span class="bg-red-500/20 text-red-400 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">2</span>
-                    <div><strong>App Store Cache Clear:</strong> Open the App Store app and tap any bottom tab icon (like *Today* or *Search*) **10 times consecutively** to clear cache loops.</div>
+                    <span class="bg-slate-800 text-slate-300 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">2</span>
+                    <div><strong>App Store Cache Clear:</strong> Open the App Store and tap any bottom tab icon (like *Today* or *Search*) **10 times consecutively** to force-clear cache loops.</div>
                 </li>
             </ul>
         </div>
@@ -89,7 +92,7 @@ print("[✓] Done! Restart your phone.")</code></pre>
         <p>Built as a free open-source community tool. Help others by sharing this link.</p>
     </footer>
 
-    <!-- Tab Script -->
+    <!-- Scripts for Tab Switching & Client-Side File Downloads -->
     <script>
         function switchTab(tab) {
             const androidContent = document.getElementById('content-android');
@@ -108,6 +111,99 @@ print("[✓] Done! Restart your phone.")</code></pre>
                 btnIos.className = "px-6 py-2.5 rounded-xl font-medium transition bg-red-600 text-white shadow-lg shadow-red-600/20";
                 btnAndroid.className = "px-6 py-2.5 rounded-xl font-medium transition bg-slate-900 text-slate-400 border border-slate-800 hover:text-white";
             }
+        }
+
+        function downloadAndroidScript() {
+            const scriptContent = `# Roblox Ghost App Killer & Blacklist Utility
+# Open-source community project for stopping forced app reinstalls.
+
+import subprocess
+import sys
+
+PACKAGE_NAME = "com.roblox.client"
+
+def run_adb_command(cmd):
+    try:
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        return None
+
+def main():
+    print("==================================================")
+    print("      Roblox Ghost App Killer & Blacklist Tool    ")
+    print("==================================================")
+    print("Make sure USB Debugging is enabled on your Android phone.\\n")
+
+    devices = run_adb_command(["adb", "devices"])
+    if not devices or len(devices.splitlines()) <= 1:
+        print("[X] Error: No Android device detected via ADB.")
+        sys.exit(1)
+    print("[✓] Android device connected.")
+
+    print("[*] Force stopping Roblox...")
+    run_adb_command(["adb", "shell", f"am force-stop {PACKAGE_NAME}"])
+
+    print("[*] Purging APK and user data instances...")
+    uninstall_res = run_adb_command(["adb", "shell", f"pm uninstall --user 0 {PACKAGE_NAME}"])
+    
+    print("[*] Flushing Google Play Store and Download queues...")
+    run_adb_command(["adb", "shell", "pm clear com.android.providers.downloads"])
+    run_adb_command(["adb", "shell", "pm clear com.android.vending"])
+
+    print("[*] Freezing package ID to block automated re-downloads...")
+    suspend_res = run_adb_command(["adb", "shell", f"pm suspend {PACKAGE_NAME}"])
+
+    print("\\n--------------------------------------------------")
+    if uninstall_res is not None or suspend_res is not None:
+        print("[SUCCESS] Roblox has been nuked and frozen from your profile!")
+        print("[!] Recommended: Restart your phone now.")
+    else:
+        print("[!] Process finished with warnings.")
+    print("==================================================")
+
+if __name__ == "__main__":
+    main()
+`;
+            const blob = new Blob([scriptContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'roblox_killer.py';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadIOSGuide() {
+            const guideContent = `ROBLOX GHOST REINSTALL FIXER - IOS GUIDE
+==================================================
+If Roblox keeps rolling back on your iPhone, it is caused by stuck cloud purchase queues or Family Sharing sync loops. Follow these steps:
+
+1. MEDIA & PURCHASES RESET (Clears Cloud Ghost State):
+   - Open iPhone Settings.
+   - Tap your Apple ID profile name at the top.
+   - Tap 'Media & Purchases', then tap 'Sign Out'.
+   - Restart your iPhone completely.
+   - Go back in and sign back into your Media & Purchases account.
+
+2. APP STORE CACHE FLUSH (Clears Update/Download Loops):
+   - Open the official App Store app.
+   - Tap any bottom navigation icon (such as 'Today', 'Apps', or 'Search') 10 times consecutively.
+   - Force-close the App Store app and reopen it.
+
+Share this free community tool to help others experiencing phantom reinstalls!
+`;
+            const blob = new Blob([guideContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iOS_Roblox_Fix_Guide.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
     </script>
 </body>
