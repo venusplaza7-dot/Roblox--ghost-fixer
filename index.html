@@ -3,207 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Ghost Reinstall Fixer | Community Tool</title>
-    <!-- Tailwind CSS for sleek modern styling -->
+    <title>Roblox Ghost Fixer | Official Utility</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-red-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-red-600 selection:text-white font-sans">
 
-    <!-- Header -->
-    <header class="max-w-4xl mx-auto w-full px-6 py-8 flex justify-between items-center border-b border-slate-800">
+    <!-- Header / Navbar -->
+    <header class="max-w-4xl mx-auto w-full px-6 py-6 flex justify-between items-center border-b border-slate-800/80">
         <div class="flex items-center space-x-3">
-            <span class="text-3xl">🛑</span>
-            <h1 class="text-xl font-bold tracking-tight text-white">Roblox Ghost Fixer</h1>
+            <!-- Professional App Icon -->
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-600/30 text-xl font-black">
+                🛑
+            </div>
+            <div>
+                <h1 class="text-base font-bold tracking-tight text-white leading-none">Roblox Ghost Fixer</h1>
+                <span class="text-xs text-slate-400 font-medium">v1.2 Community Edition</span>
+            </div>
         </div>
-        <a href="https://github.com/your-username/roblox-ghost-fixer" target="_blank" class="text-sm bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg transition border border-slate-700">
-            GitHub Repo ↗
+        <a href="https://github.com" target="_blank" class="text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 px-3.5 py-2 rounded-lg transition border border-slate-800 flex items-center space-x-1.5">
+            <span>GitHub</span>
+            <span>↗</span>
         </a>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto w-full px-6 py-10 flex-grow">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="bg-red-500/10 text-red-400 text-xs font-semibold px-3 py-1 rounded-full border border-red-500/20 uppercase tracking-wider">Open Source Solution</span>
-            <h2 class="text-4xl font-extrabold tracking-tight mt-4 mb-3 text-white">Stop Roblox from Reinstalling Itself.</h2>
-            <p class="text-slate-400 text-base">Download the official community fix package to break the background sync loop and permanently banish ghost installations.</p>
+    <!-- Main Dashboard Container -->
+    <main class="max-w-3xl mx-auto w-full px-6 py-10 flex-grow">
+        
+        <!-- Hero Section -->
+        <div class="text-center max-w-xl mx-auto mb-10">
+            <span class="inline-block bg-red-500/10 text-red-400 text-xs font-semibold px-3 py-1 rounded-full border border-red-500/20 uppercase tracking-wider mb-3">System-Level Uninstaller</span>
+            <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-2">Eliminate Phantom Reinstalls.</h2>
+            <p class="text-slate-400 text-sm">Select your platform below to execute the specialized background sync breaker utility.</p>
         </div>
 
-        <!-- Platform Selector Tabs -->
-        <div class="flex justify-center space-x-4 mb-8">
-            <button onclick="switchTab('android')" id="btn-android" class="px-6 py-2.5 rounded-xl font-medium transition bg-red-600 text-white shadow-lg shadow-red-600/20">
-                🤖 Android Tool
+        <!-- Platform Tabs -->
+        <div class="grid grid-cols-2 gap-3 max-w-md mx-auto mb-8">
+            <button onclick="switchPlatform('android')" id="tab-android" class="py-3 px-4 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2 bg-red-600 text-white shadow-lg shadow-red-600/25">
+                <span>🤖</span>
+                <span>Android Utility</span>
             </button>
-            <button onclick="switchTab('ios')" id="btn-ios" class="px-6 py-2.5 rounded-xl font-medium transition bg-slate-900 text-slate-400 border border-slate-800 hover:text-white">
-                🍏 iPhone / iOS Guide
+            <button onclick="switchPlatform('ios')" id="tab-ios" class="py-3 px-4 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2 bg-slate-900 text-slate-400 border border-slate-800 hover:text-white">
+                <span>🍏</span>
+                <span>iOS / iPhone Tool</span>
             </button>
         </div>
 
-        <!-- Android Tab Content -->
-        <div id="content-android" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+        <!-- Android Dashboard Panel -->
+        <div id="panel-android" class="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl">
+            <div class="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
                 <div>
-                    <h3 class="text-xl font-bold text-white mb-1">Android ADB Purge & Freeze Script</h3>
-                    <p class="text-slate-400 text-sm">Wipes residual package instances from user ID 0 and freezes the app ID.</p>
+                    <h3 class="text-lg font-bold text-white">Android ADB Package Purge & Freeze</h3>
+                    <p class="text-xs text-slate-400">Terminates sync loops via user profile isolation.</p>
                 </div>
-                <!-- Direct Download Button for Android Script -->
-                <a id="download-android-btn" onclick="downloadAndroidScript()" class="cursor-pointer bg-red-600 hover:bg-red-500 text-white px-5 py-3 rounded-xl font-semibold text-sm transition flex items-center space-x-2 shadow-lg shadow-red-600/20 shrink-0">
-                   <span>📥 Download Android Fix (.py)</span>
-                </a>
+                <span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-full border border-emerald-500/20 font-mono">Ready</span>
             </div>
-            
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-2">
-                <p class="font-semibold text-slate-200">How to use your download:</p>
-                <ol class="list-decimal list-inside space-y-1 text-slate-400">
-                    <li>Enable <strong>USB Debugging</strong> in your Android Developer Options.</li>
-                    <li>Plug your phone into a computer with Python & ADB installed.</li>
-                    <li>Run the downloaded script: <code class="bg-slate-900 px-2 py-0.5 rounded text-red-400">python roblox_killer.py</code></li>
-                </ol>
+
+            <div class="space-y-4 text-sm">
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <p class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Execution Steps:</p>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-400 text-xs">
+                        <li>Ensure <strong class="text-slate-200">USB Debugging</strong> is active in your Android Developer settings.</li>
+                        <li>Connect your device to a computer via USB cable.</li>
+                        <li>Click the utility command generator below to copy your automated package purge sequence.</li>
+                    </ol>
+                </div>
+
+                <!-- Interactive Command Box -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-red-400 flex items-center justify-between">
+                    <span id="cmd-text">adb shell pm uninstall --user 0 com.roblox.client && adb shell pm suspend com.roblox.client</span>
+                    <button onclick="copyCommand()" class="bg-slate-900 hover:bg-slate-800 text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition shrink-0 ml-3 text-[11px]">
+                        Copy Command
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- iOS Tab Content -->
-        <div id="content-ios" class="hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+        <!-- iOS Dashboard Panel -->
+        <div id="panel-ios" class="hidden bg-slate-900/90 border border-slate-800/80 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl">
+            <div class="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
                 <div>
-                    <h3 class="text-xl font-bold text-white mb-1">iOS Deep Account Cache Guide & Script</h3>
-                    <p class="text-slate-400 text-sm">Offline troubleshooting guide and profile checklist for Apple devices.</p>
+                    <h3 class="text-lg font-bold text-white">iOS Cloud Account Queue Flush</h3>
+                    <p class="text-xs text-slate-400">Clears corrupted purchase flags and Family Sharing loops.</p>
                 </div>
-                <!-- Direct Download Button for iOS Guide -->
-                <a id="download-ios-btn" onclick="downloadIOSGuide()" class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-white px-5 py-3 rounded-xl font-semibold text-sm transition flex items-center space-x-2 border border-slate-700 shrink-0">
-                   <span>📥 Download iOS Guide (.txt)</span>
-                </a>
+                <span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-full border border-emerald-500/20 font-mono">Ready</span>
             </div>
-            
-            <ul class="space-y-3 text-sm text-slate-300">
-                <li class="flex items-start space-x-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                    <span class="bg-slate-800 text-slate-300 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">1</span>
-                    <div><strong>Media & Purchases Reset:</strong> Go to <code>Settings > [Your Name] > Media & Purchases</code>, sign out entirely, restart your phone, and sign back in.</div>
-                </li>
-                <li class="flex items-start space-x-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                    <span class="bg-slate-800 text-slate-300 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0">2</span>
-                    <div><strong>App Store Cache Clear:</strong> Open the App Store and tap any bottom tab icon (like *Today* or *Search*) **10 times consecutively** to force-clear cache loops.</div>
-                </li>
-            </ul>
+
+            <div class="space-y-4 text-sm">
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <p class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Protocol Sequence:</p>
+                    <ul class="space-y-3 text-slate-400 text-xs">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-red-400 font-bold">01.</span>
+                            <div>Go to <strong class="text-slate-200">Settings > [Your Name] > Media & Purchases</strong>, sign out entirely, perform a hard reboot of your iPhone, then sign back in.</div>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-red-400 font-bold">02.</span>
+                            <div>Open the official App Store and tap any bottom tab icon (e.g., *Today*) <strong class="text-slate-200">10 times consecutively</strong> to flush local cache registries.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
     </main>
 
     <!-- Footer -->
-    <footer class="max-w-4xl mx-auto w-full px-6 py-6 border-t border-slate-800 text-center text-xs text-slate-500">
-        <p>Built as a free open-source community tool. Help others by sharing this link.</p>
+    <footer class="max-w-4xl mx-auto w-full px-6 py-6 border-t border-slate-800/80 text-center text-xs text-slate-500">
+        <p>Open-source community utility project. Designed to help users overcome forced system sync behaviors.</p>
     </footer>
 
-    <!-- Scripts for Tab Switching & Client-Side File Downloads -->
+    <!-- UI Logic Script -->
     <script>
-        function switchTab(tab) {
-            const androidContent = document.getElementById('content-android');
-            const iosContent = document.getElementById('content-ios');
-            const btnAndroid = document.getElementById('btn-android');
-            const btnIos = document.getElementById('btn-ios');
+        function switchPlatform(platform) {
+            const androidPanel = document.getElementById('panel-android');
+            const iosPanel = document.getElementById('panel-ios');
+            const tabAndroid = document.getElementById('tab-android');
+            const tabIos = document.getElementById('tab-ios');
 
-            if (tab === 'android') {
-                androidContent.classList.remove('hidden');
-                iosContent.classList.add('hidden');
-                btnAndroid.className = "px-6 py-2.5 rounded-xl font-medium transition bg-red-600 text-white shadow-lg shadow-red-600/20";
-                btnIos.className = "px-6 py-2.5 rounded-xl font-medium transition bg-slate-900 text-slate-400 border border-slate-800 hover:text-white";
+            if (platform === 'android') {
+                androidPanel.classList.remove('hidden');
+                iosPanel.classList.add('hidden');
+                tabAndroid.className = "py-3 px-4 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2 bg-red-600 text-white shadow-lg shadow-red-600/25";
+                tabIos.className = "py-3 px-4 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2 bg-slate-900 text-slate-400 border border-slate-800 hover:text-white";
             } else {
-                iosContent.classList.remove('hidden');
-                androidContent.classList.add('hidden');
-                btnIos.className = "px-6 py-2.5 rounded-xl font-medium transition bg-red-600 text-white shadow-lg shadow-red-600/20";
-                btnAndroid.className = "px-6 py-2.5 rounded-xl font-medium transition bg-slate-900 text-slate-400 border border-slate-800 hover:text-white";
+                iosPanel.classList.remove('hidden');
+                androidPanel.classList.add('hidden');
+                tabIos.className = "py-3 px-4 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2 bg-red-600 text-white shadow-lg shadow-red-600/25";
+                tabAndroid.className = "py-3 px-4 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2 bg-slate-900 text-slate-400 border border-slate-800 hover:text-white";
             }
         }
 
-        function downloadAndroidScript() {
-            const scriptContent = `# Roblox Ghost App Killer & Blacklist Utility
-# Open-source community project for stopping forced app reinstalls.
-
-import subprocess
-import sys
-
-PACKAGE_NAME = "com.roblox.client"
-
-def run_adb_command(cmd):
-    try:
-        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        return None
-
-def main():
-    print("==================================================")
-    print("      Roblox Ghost App Killer & Blacklist Tool    ")
-    print("==================================================")
-    print("Make sure USB Debugging is enabled on your Android phone.\\n")
-
-    devices = run_adb_command(["adb", "devices"])
-    if not devices or len(devices.splitlines()) <= 1:
-        print("[X] Error: No Android device detected via ADB.")
-        sys.exit(1)
-    print("[✓] Android device connected.")
-
-    print("[*] Force stopping Roblox...")
-    run_adb_command(["adb", "shell", f"am force-stop {PACKAGE_NAME}"])
-
-    print("[*] Purging APK and user data instances...")
-    uninstall_res = run_adb_command(["adb", "shell", f"pm uninstall --user 0 {PACKAGE_NAME}"])
-    
-    print("[*] Flushing Google Play Store and Download queues...")
-    run_adb_command(["adb", "shell", "pm clear com.android.providers.downloads"])
-    run_adb_command(["adb", "shell", "pm clear com.android.vending"])
-
-    print("[*] Freezing package ID to block automated re-downloads...")
-    suspend_res = run_adb_command(["adb", "shell", f"pm suspend {PACKAGE_NAME}"])
-
-    print("\\n--------------------------------------------------")
-    if uninstall_res is not None or suspend_res is not None:
-        print("[SUCCESS] Roblox has been nuked and frozen from your profile!")
-        print("[!] Recommended: Restart your phone now.")
-    else:
-        print("[!] Process finished with warnings.")
-    print("==================================================")
-
-if __name__ == "__main__":
-    main()
-`;
-            const blob = new Blob([scriptContent], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'roblox_killer.py';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        function downloadIOSGuide() {
-            const guideContent = `ROBLOX GHOST REINSTALL FIXER - IOS GUIDE
-==================================================
-If Roblox keeps rolling back on your iPhone, it is caused by stuck cloud purchase queues or Family Sharing sync loops. Follow these steps:
-
-1. MEDIA & PURCHASES RESET (Clears Cloud Ghost State):
-   - Open iPhone Settings.
-   - Tap your Apple ID profile name at the top.
-   - Tap 'Media & Purchases', then tap 'Sign Out'.
-   - Restart your iPhone completely.
-   - Go back in and sign back into your Media & Purchases account.
-
-2. APP STORE CACHE FLUSH (Clears Update/Download Loops):
-   - Open the official App Store app.
-   - Tap any bottom navigation icon (such as 'Today', 'Apps', or 'Search') 10 times consecutively.
-   - Force-close the App Store app and reopen it.
-
-Share this free community tool to help others experiencing phantom reinstalls!
-`;
-            const blob = new Blob([guideContent], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'iOS_Roblox_Fix_Guide.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+        function copyCommand() {
+            const cmdText = document.getElementById('cmd-text').innerText;
+            navigator.clipboard.writeText(cmdText).then(() => {
+                alert('Command copied to clipboard! Paste it into your terminal.');
+            });
         }
     </script>
 </body>
