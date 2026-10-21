@@ -12,7 +12,6 @@
     <!-- Header / Navbar -->
     <header class="max-w-4xl mx-auto w-full px-6 py-6 flex justify-between items-center border-b border-slate-800/80">
         <div class="flex items-center space-x-3">
-            <!-- Professional App Icon -->
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-600/30 text-xl font-black">
                 🛑
             </div>
@@ -65,17 +64,25 @@
                     <ol class="list-decimal list-inside space-y-2 text-slate-400 text-xs">
                         <li>Ensure <strong class="text-slate-200">USB Debugging</strong> is active in your Android Developer settings.</li>
                         <li>Connect your device to a computer via USB cable.</li>
-                        <li>Click the utility command generator below to copy your automated package purge sequence.</li>
+                        <li>Copy the clean command below or download the automation script package.</li>
                     </ol>
                 </div>
 
-                <!-- Interactive Command Box -->
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-red-400 flex items-center justify-between">
-                    <span id="cmd-text">adb shell pm uninstall --user 0 com.roblox.client && adb shell pm suspend com.roblox.client</span>
-                    <button onclick="copyCommand()" class="bg-slate-900 hover:bg-slate-800 text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition shrink-0 ml-3 text-[11px]">
-                        Copy Command
+                <!-- Fixed Command Box with Horizontal Scroll Support -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between gap-4">
+                    <div class="overflow-x-auto py-1 whitespace-nowrap scrollbar-none">
+                        <code id="cmd-text" class="font-mono text-xs text-red-400">adb shell pm uninstall --user 0 com.roblox.client && adb shell pm suspend com.roblox.client</code>
+                    </div>
+                    <button onclick="copyCommand()" class="bg-slate-900 hover:bg-slate-800 text-slate-200 px-3.5 py-2 rounded-lg border border-slate-700 transition shrink-0 text-xs font-medium">
+                        Copy
                     </button>
                 </div>
+
+                <!-- Optional Direct Script Download -->
+                <button onclick="downloadScript()" class="w-full mt-2 bg-slate-800 hover:bg-slate-700 text-slate-200 py-3 rounded-xl text-xs font-semibold transition border border-slate-700 flex items-center justify-center space-x-2">
+                    <span>📥</span>
+                    <span>Download Full Automation Script (.py)</span>
+                </button>
             </div>
         </div>
 
@@ -137,8 +144,20 @@
         function copyCommand() {
             const cmdText = document.getElementById('cmd-text').innerText;
             navigator.clipboard.writeText(cmdText).then(() => {
-                alert('Command copied to clipboard! Paste it into your terminal.');
+                alert('Command copied to clipboard!');
             });
+        }
+
+        function downloadScript() {
+            const content = `import subprocess\nimport sys\n\nPACKAGE_NAME = "com.roblox.client"\n\nprint("[*] Purging Roblox and freezing package...")\nsubprocess.run(["adb", "shell", f"pm uninstall --user 0 {{PACKAGE_NAME}}"])\nsubprocess.run(["adb", "shell", f"pm suspend {{PACKAGE_NAME}}"])\nprint("[✓] Done! Restart your phone.")`;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'roblox_killer.py';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
     </script>
 </body>
